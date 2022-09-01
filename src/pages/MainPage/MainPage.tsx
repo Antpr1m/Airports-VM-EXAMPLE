@@ -13,11 +13,11 @@ const MainPage = () => {
 
 	const dispatch = useAppDispatch()
 	const { error, loading, airports, count } = useAppSelector(state => state.airport)
-	const [page, setPage] = useState(0)
+	const [page, setPage] = useState(1)
 
 	const pageCount = Math.ceil(count / ITEMS_PER_PAGE)
 	const pageChangeHandler = ({ selected }: { selected: number }) => {
-		setPage(selected)
+		setPage(selected + 1)
 
 	}
 
@@ -44,7 +44,7 @@ const MainPage = () => {
 				onPageChange={pageChangeHandler}
 				pageRangeDisplayed={3}
 				pageCount={pageCount}
-				forcePage={page}
+				forcePage={page - 1}
 				previousLabel="<"
 				containerClassName="flex"
 				pageClassName="py-1 px-2 mr-2"
