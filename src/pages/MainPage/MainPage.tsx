@@ -16,6 +16,7 @@ const MainPage = () => {
 	const [page, setPage] = useState(1)
 
 	const pageCount = Math.ceil(count / ITEMS_PER_PAGE)
+
 	const pageChangeHandler = ({ selected }: { selected: number }) => {
 		setPage(selected + 1)
 
@@ -38,7 +39,7 @@ const MainPage = () => {
 				airports.map(airport => <AirportCard key={airport.id} airport={airport} />)
 			}
 
-			<ReactPaginate
+			{pageCount && <ReactPaginate
 				breakLabel="..."
 				nextLabel=">"
 				onPageChange={pageChangeHandler}
@@ -51,7 +52,7 @@ const MainPage = () => {
 				previousClassName="py-1 px-2 mr-2"
 				nextClassName="py-1 px-2"
 				activeClassName="bg-gray-500 text-white"
-			/>
+			/>}
 
 		</div>
 	)
